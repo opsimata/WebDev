@@ -7,7 +7,7 @@ $controller = $controller . "Controller";
 
 //EstudanteController
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/aula3/controller/EstudanteController.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/aula3/controller/' . $controller . '.php';
 
 
 
