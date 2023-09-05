@@ -14,31 +14,29 @@ class ProfessorModel
     {
         $this->database = new Database();
     }
-
     public function listarModel(): array
     {
-
-        // $dadosArray = $this->database->select("SELECT nome FROM estudantes");
         $dadosArray = $this->database->select("SELECT * FROM professores");
-
         return $dadosArray;
-
-        // var_dump($dadosArray);
-        // die;
-
-        // return [
-        //     [
-        //         "nome" => "Lucas Saraiva"
-        //     ],
-        //     [
-        //         "nome" => "Pedro Lippert"
-        //     ]
-        // ];
     }
-
     public function salvarModel(string $nome, int $idade)
     {
         $sql = "INSERT INTO professores (nome, idade) values ('$nome', '$idade')";
         $this->database->insert($sql);
     }
+    public function buscarPeloID(int $id)
+    {
+        $professorArray = $this->database->select("SELECT * FROM professores WHERE id = '$id'");
+        return $professorArray[0];
+    }
+    public function atualizarModel(int $id, string $nome, int $idade)
+    {
+        $sql = "UPDATE professores SET nome = '$nome', idade = '$idade' WHERE id = '$id'";
+        $this->database->insert($sql);
+    }
+    public function excluirModel(int $id)
+    {
+        $sql = "DELETE FROM professores WHERE id = '$id'";
+        $this->database->insert($sql);
+    }  
 }
